@@ -1,0 +1,92 @@
+<html>
+
+  <head>
+    <script>
+      let history = '';
+
+      //function that display value 
+      function dis(val) {
+        document.getElementById("result").value += val;
+
+        addToHistory(val);
+      }
+
+      //function that evaluates the digit and return result 
+      function solve() {
+        let x = document.getElementById("result").value;
+        let y = eval(x);
+        document.getElementById("result").value = y;
+
+        addToHistory('=' + y);
+      }
+
+      //function that clear the display 
+      function clr() {
+        document.getElementById("result").value = "";
+
+        addToHistory(' ');
+      }
+
+      function addToHistory(value) {
+        history += value;
+        document.getElementById('history').innerText = history;
+      }
+
+    </script>
+    <!-- for styling -->
+    <style>
+      .title {
+        margin-bottom: 10px;
+        text-align: center;
+        width: 175px;
+        color: grey;
+        border: solid black 2px;
+      }
+
+      input[type="button"] {
+        background-color: grey;
+        color: black;
+        border: solid black 2px;
+        width: 100%
+      }
+
+      input[type="text"] {
+        background-color: white;
+        border: solid black 2px;
+        width: 100%
+      }
+
+    </style>
+  </head>
+  <!-- create table -->
+
+  <body>
+    <div class=title>ITP2 Calculator</div>
+    <table border="1">
+      <tr>
+        <td colspan="3"><input type="text" id="result" /></td>
+        <!-- clr() function will call clr to clear all value -->
+      </tr>
+      <tr>
+        <!-- create button and assign value to each button -->
+        <!-- dis("1") will call function dis to display value -->
+        <td><input type="button" value="1" onclick="dis('1')" /> </td>
+        <td><input type="button" value="3" onclick="dis('3')" /> </td>
+        <td><input type="button" value="+" onclick="dis('+')" /> </td>
+      </tr>
+      <tr>
+        <td><input type="button" value="5" onclick="dis('5')" /> </td>
+        <td><input type="button" value="7" onclick="dis('7')" /> </td>
+        <td><input type="button" value="/" onclick="dis('/')" /> </td>
+      </tr>
+      <tr>
+        <td><input type="button" value="9" onclick="dis('9')" /> </td>
+        <td><input type="button" value="Clr" onclick="clr()" /> </td>
+        <td><input type="button" value="=" onclick="solve()" /> </td>
+      </tr>
+    </table>
+
+    <div id="history"></div>
+  </body>
+
+</html>
